@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kho học liệu số Mầm non Châu Thành</title>
+<style>
+:root{--bg:#fffaf0;--card:#fff;--ink:#2d2a3e;--mute:#6b6880;--pri:#ff7a59;--pri2:#ffe3d9;--acc:#2fa38e;--line:#f0e4d0;--sh:0 4px 14px rgba(120,80,20,.08);color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1b1a26;--card:#262536;--ink:#f1eefc;--mute:#a9a5c4;--pri:#ff8f70;--pri2:#43302c;--acc:#52cdb8;--line:#38364b;--sh:0 4px 14px rgba(0,0,0,.35);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1b1a26;--card:#262536;--ink:#f1eefc;--mute:#a9a5c4;--pri:#ff8f70;--pri2:#43302c;--acc:#52cdb8;--line:#38364b;--sh:0 4px 14px rgba(0,0,0,.35);color-scheme:dark}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Nunito","Segoe UI",system-ui,sans-serif;line-height:1.5}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+header{padding:26px 0 14px;text-align:center}
+.kicker{display:inline-block;background:var(--pri2);color:var(--pri);font-weight:800;font-size:.78rem;letter-spacing:.06em;border-radius:999px;padding:4px 14px}
+h1{margin:10px 0 6px;font-size:clamp(1.5rem,4.2vw,2.3rem);line-height:1.2;text-transform:uppercase}
+h1 span{color:var(--pri)}
+header p{margin:0 auto;max-width:600px;color:var(--mute)}
+.stats{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:16px 0 10px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:8px 16px;box-shadow:var(--sh);font-size:.9rem}
+.stat b{color:var(--pri);font-size:1.2rem;margin-right:4px}
+.top{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0 12px}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;width:100%}
+.top input{flex:1 1 240px;width:auto}.top select{width:auto}
+.btn{font:inherit;cursor:pointer;border:0;border-radius:12px;padding:10px 16px;background:var(--pri);color:#fff;font-weight:800}
+.btn.ghost{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+.btn.sm{padding:7px 12px;font-size:.88rem}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.chip{font:inherit;cursor:pointer;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:.88rem}
+.chip.on{background:var(--pri);border-color:var(--pri);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;padding-bottom:24px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--sh);overflow:hidden;display:flex;flex-direction:column}
+.thumb{height:84px;display:flex;align-items:center;justify-content:center;font-size:2.8rem;background:var(--pri2)}
+.body{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.body h3{margin:0;font-size:1.02rem;word-break:break-word}
+.body p{margin:0;color:var(--mute);font-size:.88rem;flex:1;word-break:break-word}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{background:var(--pri2);color:var(--pri);border-radius:8px;padding:2px 8px;font-size:.75rem;font-weight:800}
+.tag.t2{background:rgba(47,163,142,.15);color:var(--acc)}
+.by{font-size:.78rem;color:var(--mute)}
+.act{display:flex;gap:8px;margin-top:4px}.act a{flex:1;text-align:center;text-decoration:none}
+.empty{text-align:center;color:var(--mute);padding:40px 10px;grid-column:1/-1}
+.note{background:var(--pri2);color:var(--ink);border-radius:12px;padding:10px 14px;font-size:.88rem;margin-bottom:14px}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;padding:16px;z-index:20}
+.modal.show{display:flex}
+.box{background:var(--card);border-radius:20px;max-width:520px;width:100%;padding:20px;max-height:92vh;overflow:auto}
+.box h2{margin:0 0 10px}
+label{display:block;font-size:.84rem;font-weight:700;margin:10px 0 4px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.err{color:#d6453a;font-size:.85rem;min-height:1.2em;margin-top:8px}
+footer{text-align:center;color:var(--mute);font-size:.82rem;padding:10px 0 30px}
+
+.authbar{display:flex;justify-content:flex-end;align-items:center;gap:8px;flex-wrap:wrap;padding-top:16px}
+.authbar span{font-size:.85rem;overflow-wrap:anywhere}
+button:disabled{opacity:.55;cursor:wait}
+.auth-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="authbar"><span id="accountStatus" role="status">Chưa đăng nhập</span><button class="btn sm" id="login">Đăng nhập</button><button class="btn ghost sm" id="verifyEmail" hidden>Gửi thư xác minh</button><button class="btn ghost sm" id="logout" hidden>Đăng xuất</button></div>
+<header>
+<span class="kicker">KHO DÙNG CHUNG CỦA GIÁO VIÊN</span>
+<h1>Kho học liệu số <span>Mầm non Châu Thành</span></h1>
+<p>Nơi giáo viên cùng chia sẻ giáo án, bài giảng điện tử, video, bài hát, trò chơi và phiếu bé tập để dùng chung toàn trường.</p>
+<div class="stats"><div class="stat"><b id="sTotal">0</b>học liệu</div><div class="stat"><b id="sTeach">0</b>giáo viên chia sẻ</div><div class="stat"><b id="sShown">0</b>đang hiển thị</div></div>
+</header>
+<div id="demoNote" class="note" hidden>Bạn đang xem bản minh họa. Hãy đăng nhập tài khoản được mời để xem và chia sẻ học liệu thật của trường.</div>
+<div class="top">
+<input id="q" type="search" placeholder="🔍 Tìm theo tên, nội dung, giáo viên...">
+<select id="age"><option value="">Mọi độ tuổi</option><option>Nhà trẻ (24–36 tháng)</option><option>3–4 tuổi</option><option>4–5 tuổi</option><option>5–6 tuổi</option></select>
+<select id="type"></select>
+<button class="btn" id="add">➕ Chia sẻ học liệu</button>
+</div>
+<div class="chips" id="chips"></div>
+<div class="grid" id="grid"></div>
+<footer>Kho học liệu số Mầm non Châu Thành · Chỉ chia sẻ tài liệu có bản quyền phù hợp</footer>
+</div>
+<div class="modal" id="modal"><div class="box" id="box"></div></div>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script>
+// Điền cấu hình ứng dụng Web lấy từ Firebase Console > Project settings.
+// Đây là cấu hình Web công khai. Không đưa khóa service account vào HTML.
+const firebaseConfig={apiKey:"",authDomain:"",projectId:"",appId:""};
+let auth=null,unsubscribe=null,authVersion=0;
+
+const TYPES={"Bài giảng điện tử":"📊","Giáo án":"📘","Video":"🎬","Bài hát":"🎵","Trò chơi":"🎲","Truyện":"📖","Phiếu bé tập":"✏️","Khác":"📁"};
+const FIELDS=["Tất cả","Phát triển ngôn ngữ","Nhận thức","Phát triển thể chất","Tình cảm – xã hội","Thẩm mỹ"];
+const AGES=["Nhà trẻ (24–36 tháng)","3–4 tuổi","4–5 tuổi","5–6 tuổi"];
+const DEMO=[
+{id:"d1",title:"Học chữ cái qua con vật",type:"Bài giảng điện tử",field:"Phát triển ngôn ngữ",age:"4–5 tuổi",desc:"Bài giảng làm quen bảng chữ cái với hình ảnh con vật.",authorName:"Minh họa",link:"",createdAt:3},
+{id:"d2",title:"Thể dục sáng vui nhộn",type:"Video",field:"Phát triển thể chất",age:"3–4 tuổi",desc:"Bài vận động 5 phút theo nhạc.",authorName:"Minh họa",link:"",createdAt:2},
+{id:"d3",title:"Tập tô nét cơ bản",type:"Phiếu bé tập",field:"Phát triển ngôn ngữ",age:"5–6 tuổi",desc:"Phiếu in A4 luyện nét chuẩn bị vào lớp 1.",authorName:"Minh họa",link:"",createdAt:1}];
+const $=id=>document.getElementById(id);
+const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const okLink=u=>/^https?:\/\/[^\s]+$/i.test(u||"");
+let db=null,user=null,myId="",canEdit=false,items=[],demo=false,field="Tất cả";
+$("type").innerHTML='<option value="">Mọi loại</option>'+Object.keys(TYPES).map(t=>`<option>${t}</option>`).join("");
+$("chips").innerHTML=FIELDS.map(f=>`<button class="chip" data-f="${f}">${f}</button>`).join("");
+function paintChips(){document.querySelectorAll(".chip").forEach(c=>c.classList.toggle("on",c.dataset.f===field))}
+function render(){
+ paintChips();
+ const q=$("q").value.trim().toLowerCase(),a=$("age").value,t=$("type").value;
+ const list=items.filter(d=>(field==="Tất cả"||d.field===field)&&(!a||d.age===a)&&(!t||d.type===t)&&(!q||((d.title||"")+" "+(d.desc||"")+" "+(d.authorName||"")).toLowerCase().includes(q)))
+  .sort((x,y)=>(y.createdAt||0)-(x.createdAt||0));
+ $("grid").innerHTML=list.length?list.map(d=>{
+  const mine=!demo&&(canEdit||(myId&&d.authorId===myId));
+  return `<div class="card"><div class="thumb">${TYPES[d.type]||"📁"}</div><div class="body"><div class="tags"><span class="tag">${esc(d.type)}</span><span class="tag t2">${esc(d.age)}</span></div><h3>${esc(d.title)}</h3><p>${esc(d.desc)}</p><div class="by">${esc(d.field)} · GV: ${esc(d.authorName||"Ẩn danh")}</div><div class="act">${okLink(d.link)?`<a class="btn sm" href="${esc(d.link)}" target="_blank" rel="noopener noreferrer">Mở tài liệu</a>`:`<span class="by">Chưa có liên kết</span>`}${mine?`<button class="btn sm ghost" data-del="${esc(d.id)}">🗑 Xóa</button>`:""}</div></div></div>`}).join(""):
+  `<div class="empty">${items.length?"Không tìm thấy học liệu phù hợp 🌱":"Kho đang trống 🌱<br>Hãy bấm “Chia sẻ học liệu” để đăng tài liệu đầu tiên cho cả trường."}</div>`;
+ $("sTotal").textContent=items.length;$("sShown").textContent=list.length;
+ $("sTeach").textContent=new Set(items.map(d=>(d.authorName||"").trim().toLowerCase()).filter(Boolean)).size;
+}
+$("chips").onclick=e=>{if(e.target.dataset.f){field=e.target.dataset.f;render()}};
+["q","age","type"].forEach(id=>$(id).oninput=render);
+$("grid").onclick=async e=>{
+ const id=e.target.dataset.del;if(!id||!db)return;
+ if(!confirm("Xóa học liệu này khỏi kho?"))return;
+ try{await db.doc("resources/"+id).delete()}catch(x){alert("Bạn không có quyền xóa mục này.")}
+};
+function closeM(){$("modal").classList.remove("show")}
+$("modal").onclick=e=>{if(e.target.id==="modal"||e.target.dataset.close)closeM()};
+$("add").onclick=()=>{
+ if(!db||!user||demo){showLogin();return}
+ let nm="";try{nm=user.displayName||localStorage.getItem("gv")||user.email||""}catch(x){}
+ $("box").innerHTML=`<h2>➕ Chia sẻ học liệu</h2>
+ <label>Tên học liệu *</label><input id="fT" maxlength="120" placeholder="VD: Bài giảng chủ đề Bản thân">
+ <div class="row"><div><label>Loại *</label><select id="fTy">${Object.keys(TYPES).map(t=>`<option>${t}</option>`).join("")}</select></div>
+ <div><label>Độ tuổi *</label><select id="fA">${AGES.map(t=>`<option>${t}</option>`).join("")}</select></div></div>
+ <label>Lĩnh vực *</label><select id="fF">${FIELDS.slice(1).map(t=>`<option>${t}</option>`).join("")}</select>
+ <label>Liên kết tài liệu * (Google Drive, YouTube, OneDrive...)</label><input id="fL" placeholder="https://drive.google.com/...">
+ <label>Mô tả ngắn</label><textarea id="fD" rows="3" maxlength="400" placeholder="Nội dung, cách dùng, thời lượng..."></textarea>
+ <label>Giáo viên chia sẻ *</label><input id="fN" maxlength="60" value="${esc(nm)}" placeholder="Họ tên và lớp/tổ">
+ <div class="err" id="err"></div>
+ <div style="display:flex;gap:8px;margin-top:8px"><button class="btn" id="fS">Đăng lên kho</button><button class="btn ghost" data-close="1">Hủy</button></div>
+ <div class="by" style="margin-top:10px">Mẹo: đặt quyền chia sẻ tệp trên Drive là “Bất kỳ ai có đường liên kết” để đồng nghiệp mở được.</div>`;
+ $("modal").classList.add("show");
+ $("fS").onclick=async()=>{
+  const v=id=>$(id).value.trim(),t=v("fT"),l=v("fL"),n=v("fN");
+  if(!t||!n)return $("err").textContent="Vui lòng nhập tên học liệu và tên giáo viên.";
+  if(!okLink(l))return $("err").textContent="Liên kết phải bắt đầu bằng http:// hoặc https://";
+  $("fS").disabled=true;
+  try{
+   await db.collection("resources").add({title:t,type:v("fTy"),age:v("fA"),field:v("fF"),link:l,desc:v("fD"),authorName:n,authorId:myId,createdAt:Date.now()});
+   try{localStorage.setItem("gv",n)}catch(x){}
+   closeM();
+  }catch(x){$("fS").disabled=false;$("err").textContent="Chưa đăng được. Có thể bạn chưa có quyền thêm học liệu, hãy nhờ quản trị viên cấp quyền."}
+ };
+};
+
+function showDemo(message){
+ demo=true;items=DEMO;db=null;canEdit=false;
+ $("demoNote").hidden=false;
+ $("demoNote").textContent=message||"Bạn đang xem bản minh họa. Đăng nhập tài khoản được cấp quyền để xem kho thật.";
+ render();
+}
+function authMessage(e){
+ return ({
+ "auth/invalid-credential":"Email hoặc mật khẩu không đúng.",
+ "auth/invalid-login-credentials":"Email hoặc mật khẩu không đúng.",
+ "auth/wrong-password":"Email hoặc mật khẩu không đúng.",
+ "auth/user-not-found":"Email hoặc mật khẩu không đúng.",
+ "auth/invalid-email":"Địa chỉ email chưa hợp lệ.",
+ "auth/user-disabled":"Tài khoản đã bị vô hiệu hóa. Vui lòng liên hệ quản trị viên.",
+ "auth/popup-closed-by-user":"Bạn đã đóng cửa sổ đăng nhập.",
+ "auth/cancelled-popup-request":"Một cửa sổ đăng nhập khác đang mở.",
+ "auth/popup-blocked":"Trình duyệt chặn cửa sổ. Hãy cho phép cửa sổ bật lên rồi thử lại.",
+ "auth/unauthorized-domain":"Tên miền chưa được thêm vào Authorized domains của Firebase.",
+ "auth/operation-not-allowed":"Chưa bật phương thức đăng nhập này trong Firebase.",
+ "auth/network-request-failed":"Không kết nối được. Vui lòng kiểm tra mạng.",
+ "auth/too-many-requests":"Bạn thử quá nhiều lần. Vui lòng chờ rồi thử lại.",
+ "auth/account-exists-with-different-credential":"Email đã dùng phương thức khác. Hãy đăng nhập bằng phương thức đã đăng ký."
+ })[e.code]||"Chưa thực hiện được. Vui lòng thử lại hoặc liên hệ quản trị viên.";
+}
+function showLogin(){
+ $("box").innerHTML=`<h2>Đăng nhập kho học liệu</h2>
+ <p class="by">Dành cho giáo viên được nhà trường cấp quyền.</p>
+ <button class="btn ghost" id="googleLogin" style="width:100%">Đăng nhập bằng Google</button>
+ <p class="by" style="text-align:center">hoặc dùng email và mật khẩu</p>
+ <form id="emailLogin">
+ <label for="loginEmail">Email</label><input id="loginEmail" type="email" autocomplete="username" required maxlength="254">
+ <label for="loginPassword">Mật khẩu</label><input id="loginPassword" type="password" autocomplete="current-password" required>
+ <div class="auth-actions"><button class="btn" type="submit">Đăng nhập</button><button class="btn ghost" type="button" id="resetPassword">Quên mật khẩu?</button><button class="btn ghost" type="button" data-close="1">Đóng</button></div></form>
+ <div class="err" role="status" aria-live="polite" id="authError"></div>
+ <p class="by">Chưa có tài khoản? Liên hệ quản trị viên để được cấp tài khoản và quyền truy cập.</p>`;
+ $("modal").classList.add("show");
+ const error=$("authError");
+ if(!auth)error.textContent="Chưa cấu hình Firebase. Xem hướng dẫn ở cuối mã nguồn.";
+ const busy=value=>$("box").querySelectorAll("button").forEach(b=>b.disabled=value);
+ async function run(action){
+  if(!auth){error.textContent="Chưa cấu hình Firebase. Xem hướng dẫn ở cuối mã nguồn.";return}
+  busy(true);error.textContent="";
+  try{await action()}catch(e){error.textContent=authMessage(e)}
+  finally{if(error.isConnected)busy(false)}
+ }
+ $("googleLogin").onclick=()=>run(()=>{const provider=new firebase.auth.GoogleAuthProvider();provider.setCustomParameters({prompt:"select_account"});return auth.signInWithPopup(provider)});
+ $("emailLogin").onsubmit=e=>{e.preventDefault();run(()=>auth.signInWithEmailAndPassword($("loginEmail").value.trim(),$("loginPassword").value))};
+ $("resetPassword").onclick=()=>{
+  const input=$("loginEmail");if(!input.reportValidity())return;
+  run(async()=>{await auth.sendPasswordResetEmail(input.value.trim());error.textContent="Nếu email có tài khoản, hướng dẫn đặt lại mật khẩu sẽ được gửi. Hãy kiểm tra cả thư rác."});
+ };
+ $("loginEmail").focus();
+}
+$("login").onclick=showLogin;
+$("verifyEmail").onclick=async()=>{
+ const button=$("verifyEmail");button.disabled=true;
+ try{await auth.currentUser.sendEmailVerification();alert("Đã gửi thư xác minh. Sau khi xác minh, tải lại trang để cập nhật quyền truy cập.")}
+ catch(e){alert(authMessage(e))}finally{button.disabled=false}
+};
+$("logout").onclick=async()=>{if(auth)try{await auth.signOut()}catch(e){alert(authMessage(e))}};
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeM()});
+async function initAuth(){
+ if(!firebaseConfig.apiKey||!firebaseConfig.projectId||!firebaseConfig.authDomain){
+  showDemo("Bản minh họa • Chưa điền cấu hình Firebase để sử dụng đăng nhập Google và email.");
+  return;
+ }
+ try{
+  if(!window.firebase)throw new Error("sdk");
+  firebase.initializeApp(firebaseConfig);
+  auth=firebase.auth();auth.languageCode="vi";
+  auth.onAuthStateChanged(async current=>{
+   const version=++authVersion;
+   if(unsubscribe){unsubscribe();unsubscribe=null}
+   user=current;myId=current?current.uid:"";canEdit=false;db=null;
+   closeM();$("verifyEmail").hidden=!current||current.emailVerified;$("logout").hidden=!current;$("login").hidden=!!current;
+   $("accountStatus").textContent=current?(current.displayName||current.email||"Đã đăng nhập"):"Chưa đăng nhập";
+   showDemo(current?"Đang kiểm tra quyền truy cập…":undefined);
+   if(!current)return;
+   try{
+    const store=firebase.firestore();
+    const member=await store.collection("members").doc(current.email||"_").get();
+    if(version!==authVersion)return;
+    if(!current.emailVerified){
+     showDemo("Email chưa được xác minh. Kiểm tra thư xác minh hoặc liên hệ quản trị viên.");
+     return;
+    }
+    if(!member.exists||member.data().active!==true){
+     showDemo("Tài khoản đã đăng nhập nhưng chưa được cấp quyền. Vui lòng liên hệ quản trị viên.");
+     return;
+    }
+    db=store;demo=false;items=[];$("demoNote").hidden=true;render();
+    unsubscribe=store.collection("resources").onSnapshot(snapshot=>{
+     if(version!==authVersion)return;
+     items=snapshot.docs.map(d=>({...d.data(),id:d.id}));render();
+    },()=>{if(version===authVersion)showDemo("Chưa đọc được kho học liệu. Vui lòng kiểm tra quyền truy cập và kết nối.")});
+   }catch(e){if(version===authVersion)showDemo("Chưa kiểm tra được quyền truy cập. Liên hệ quản trị viên để kiểm tra Firebase và danh sách giáo viên.")}
+  });
+ }catch(e){showDemo("Không khởi tạo được đăng nhập. Kiểm tra cấu hình Firebase và kết nối mạng.")}
+}
+initAuth();
+render();
+</script>
+</body>
+
+<!--
+HƯỚNG DẪN KÍCH HOẠT
+1. Tạo dự án tại https://console.firebase.google.com và thêm ứng dụng Web.
+   Dán firebaseConfig vào đầu script. Không dùng khóa service account.
+2. Authentication > Sign-in method: bật Google và Email/Password.
+   Authentication > Settings > Authorized domains: thêm tên miền chạy trang.
+   Chạy trang qua HTTPS (localhost dùng phát triển), không mở bằng file://.
+   Công cụ nhúng phải cho phép script ngoài và cửa sổ OAuth; ưu tiên mở trang độc lập.
+3. Tạo Cloud Firestore. Dán quy tắc bên dưới vào tab Rules rồi Publish.
+4. Cấp quyền: tạo collection members, mỗi document có ID chính xác bằng email
+   tài khoản do Firebase hiển thị (giữ đúng chữ hoa/thường), trường active kiểu boolean = true.
+   Giáo viên Google đăng nhập trực tiếp sau khi được cấp quyền.
+   Với email/mật khẩu: quản trị viên tạo tài khoản ở Authentication > Users,
+   gửi quy trình đặt lại mật khẩu, giáo viên đăng nhập rồi bấm “Gửi thư xác minh”, mở liên kết trong email
+   và tải lại trang. Không đánh dấu verified khi chưa xác minh.
+   Có thể dùng Google cho địa chỉ Gmail để email được xác minh tự động.
+   Không có tự đăng ký nhằm giữ mô hình tài khoản được mời.
+5. Dữ liệu cũ trong claude.use("db") không tự chuyển sang Firebase.
+   Cần chuyển riêng nếu muốn dùng lại kho cũ.
+
+FIRESTORE RULES (không đặt rules chỉ ở phía giao diện):
+rules_version = '2';
+service cloud.firestore {
+ match /databases/{database}/documents {
+  function verified() {
+   return request.auth != null
+    && request.auth.token.email_verified == true;
+  }
+  function member() {
+   return verified()
+    && exists(/databases/$(database)/documents/members/$(request.auth.token.email))
+    && get(/databases/$(database)/documents/members/$(request.auth.token.email)).data.active == true;
+  }
+  match /members/{email} {
+   allow get: if request.auth != null && request.auth.token.email == email;
+   allow list, write: if false;
+  }
+  match /resources/{resourceId} {
+   allow read: if member();
+   allow create: if member()
+    && request.resource.data.keys().hasAll(['title','type','age','field','link','desc','authorName','authorId','createdAt'])
+    && request.resource.data.keys().hasOnly(['title','type','age','field','link','desc','authorName','authorId','createdAt'])
+    && request.resource.data.authorId == request.auth.uid
+    && request.resource.data.title is string
+    && request.resource.data.title.size() > 0 && request.resource.data.title.size() <= 120
+    && request.resource.data.authorName is string
+    && request.resource.data.authorName.size() > 0 && request.resource.data.authorName.size() <= 60
+    && request.resource.data.desc is string && request.resource.data.desc.size() <= 400
+    && request.resource.data.type in ['Bài giảng điện tử','Giáo án','Video','Bài hát','Trò chơi','Truyện','Phiếu bé tập','Khác']
+    && request.resource.data.age in ['Nhà trẻ (24–36 tháng)','3–4 tuổi','4–5 tuổi','5–6 tuổi']
+    && request.resource.data.field in ['Phát triển ngôn ngữ','Nhận thức','Phát triển thể chất','Tình cảm – xã hội','Thẩm mỹ']
+    && request.resource.data.link is string
+    && request.resource.data.link.size() <= 2048
+    && request.resource.data.link.matches('https?://[^ ]+')
+    && request.resource.data.createdAt is number;
+   allow delete: if member() && resource.data.authorId == request.auth.uid;
+   allow update: if false;
+  }
+ }
+}
+-->
+
+</html>
